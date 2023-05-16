@@ -1,0 +1,102 @@
+<script>
+    function calcularEstadocivil(listaResp){
+        for(let i=0; i < listaResp.length; i++){
+            if(listaResp[i][0] == opcao1){
+                totalsolteiros ++;
+            }if(listaResp[i][0] == opcao2){
+                totalcasados ++;
+            }if(listaResp[i][0] == opcao3){
+                totaldivorciados ++;
+            }      
+    }
+    document.write("% de" + opcao1 +":"+((totalsolteiros/listaResp.length)*100));
+    document.write('<br>');
+    document.write("% de" + opcao2 +":"+((totalcasados/listaResp.length)*100));
+    document.write('<br>');
+    document.write("% de" + opcao3 +":"+((totaldivorciados/listaResp.length)*100));
+    document.write('<br>');
+
+    } 
+    
+    function calcularidade(listaResp){
+    var maisNovoSolteiro = 0;
+    var maisVelhoSolteiro = 0;
+    var maisNovoCasado = 0;
+    var maisVelhoCasado = 0;
+    var maisNovoDivorciado = 0;
+    var maisVelhoDivorciado = 0;
+        for(let i=0; i < listaResp.length; i++){
+            if ((idade[i][1] < maisNovoSolteiro) || (maisNovoSolteiro == 0)) {
+                maisNovoSolteiro = idade;
+            }
+            if(listaResp[i][1] == maisVelhoSolteiro) {
+                maisVelhoSolteiro == listaResp[i][1]
+            }
+            if ((idade[i][1] < maisNovoCasado) || (maisNovoCasado == 0)) {
+                maisNovoCasado = idade;
+            }
+            if(listaResp[i][1] == maisVelhoCasado) {
+                maisVelhoCasado == listaResp[i][1]
+            }
+            if ((idade[i][1] < maisVelhoDivorciado) || (maisVelhoDivorciado == 0)) {
+                maisVelhoDivorciado = idade;
+            }
+            if(listaResp[i][1] == maisVelhoDivorciado) {
+                maisVelhoDivorciado == listaResp[i][1]
+            }
+        }
+    document.write('Idade do habitante solteiro mais novo é:' + maisNovoSolteiro);
+    }
+
+    function calcularquantia(listaResp){
+    var quantiaSolteiroMasculino = 0;
+    var quantiaSolteiroFeminino = 0;
+    var quantiaCasadoMasculino = 0;
+    var quantiaCasadoFeminino = 0;
+    var quantiaDivorciadoMasculino  = 0;
+    var quantiaDivorciadoFeminino = 0;
+    for(let i=0; i < listaResp.length; i++){
+            if(listaResp[i][2] == quantiaSolteiroMasculino){
+                quantiaSolteiroMasculino ++;
+            }if(listaResp[i][2] == quantiaSolteiroFeminino){
+                quantiaSolteiroFeminino ++;
+            }if(listaResp[i][2] == quantiaCasadoMasculino){
+                quantiaCasadoMasculino ++;
+            }if(listaResp[i][2] == quantiaCasadoFeminino){
+                quantiaCasadoFeminino ++;
+            }if(listaResp[i][2] == quantiaDivorciadoMasculino){
+                quantiaDivorciadoMasculino ++;
+            }if(listaResp[i][2] == quantiaDivorciadoFeminino){
+                quantiaDivorciadoFeminino ++;
+            }
+        }
+    document.write("Quantia de Solteiros Masculinos:" + quantiaSolteiroMasculino);
+    }
+
+    const opcao1 = 'Solteiro';
+    const opcao2 = 'Casado';
+    const opcao3 = 'Divorciado';
+    var totalsolteiros = 0;
+    var totalcasados = 0;
+    var totaldivorciados = 0;
+    var listaResp = [];
+    do {
+        var opcao = window.prompt('Digite seu estado civil:('+ opcao1 + ', '+ opcao2 + ', '+ opcao3 + ')');
+        var idade = window.prompt('Digite sua idade:');
+        var sexo = window.prompt('Digite seu sexo:(Masculino, Feminino)');
+        var continuar = window.prompt('Deseja continuar? (Sim, Não)');
+
+        listaResp.push([opcao, idade, sexo])
+
+    } while (continuar == 'Sim');
+
+calcularEstadocivil(listaResp);
+document.write('<br>');
+calcularidade(listaResp);
+document.write('<br>');
+calcularquantia(listaResp);
+document.write('<br>');
+document.write('Total de respondentes:' + listaResp.length)
+document.write('<br>');
+
+</script>

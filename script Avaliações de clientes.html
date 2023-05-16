@@ -1,0 +1,58 @@
+<script>
+
+var responde = prompt("Deseja responder o questionário do sistema(S-Sim N-Não)?");
+var quantidadeRespondentes = 0;
+var quantidadeOtimo = 0;
+var quantidadeBom = 0;
+var quantidadeRegular = 0;
+var quantidadePessimo = 0;
+var idadeMaisNovo = 0;
+var avaliaçãoMaisNovo;
+var idadeMaisVelho = 0;
+var avaliaçãoMaisVelho;
+
+while (responde == "S") {
+    quantidadeRespondentes ++;
+    var avaliação = prompt ("Qual a sua  avaliação em relação aos serviços do cinema (O-Otimo, B-Bom, R-Regular P-Pessimo)?");
+    if (avaliação == "O") {
+        quantidadeOtimo ++;
+    } else if (avaliação == "B") {
+        quantidadeBom ++;
+    } else if (avaliação == "R") {
+        quantidadeRegular ++;
+    } else if (avaliação == "P") {
+        quantidadePessimo ++;
+    }
+    
+    var idade = prompt("Qual a sua idade?");
+    
+    if (idade > idadeMaisVelho) {
+        idadeMaisVelho = idade;
+        avaliaçãoMaisVelho = avaliação;
+    };
+    
+    if ((idade < idadeMaisNovo) || (idadeMaisNovo == 0)) {
+        idadeMaisNovo = idade;
+        avaliaçãoMaisNovo = avaliação;
+    };
+    
+    responde = prompt("Deseja responder o questionário do sistema(S-Sim N-Não)?");
+}
+
+document.write("Total de respondentes: " + quantidadeRespondentes);
+document.write("<br>");
+document.write("Total de avaliações Otimo: " + quantidadeOtimo);
+document.write("<br>");
+document.write("Total de avaliações Bom: " + quantidadeBom);
+document.write("<br>");
+document.write("Total de avaliações Regular: " + quantidadeRegular);
+document.write("<br>");
+document.write("Total de avaliações Pessimo: " + quantidadePessimo);
+document.write("<br>");
+document.write("O respondente mais velho possuía a idade: " + idadeMaisVelho + " anos ");
+document.write("E Sua resposta foi: " + avaliaçãoMaisVelho);
+document.write("<br>");
+document.write("O respondente mais novo possuía a idade: " + idadeMaisNovo + " anos ");
+document.write("E Sua resposta foi: " + avaliaçãoMaisNovo);
+
+</script>

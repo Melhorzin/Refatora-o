@@ -1,0 +1,77 @@
+<script>
+    class Banco{
+        constructor(nome, juros){
+            this.nome=nome;
+            this.juros=juros;
+    
+        }
+    
+    }
+    
+    class Conta{
+        constructor(banco, saldo, limite, emprestimo){
+            this.banco=banco;
+            this.saldo=saldo;
+            this.limite=limite;
+            this.emprestimo=emprestimo;
+    
+        }
+        depositar(valor){
+            this.saldo += valor;           
+        }
+        sacar(valor){
+            if(valor>this.saldo){
+                console.log("saldo insuficiente")
+            } else{
+                console.log("saque realizado com sucesso")
+                this.saldo -= valor;
+            }
+            
+        }
+        fazerEmprestimo(valor){
+            if(valor > this.limite){
+            console.log("limite insuficiente")
+            } else{
+                console.log("emprestimo realizado com sucesso")
+                this.limite -= valor;
+                console.log(this.banco)
+                this.emprestimo=valor+(valor*this.banco.juros)
+            }
+        }
+    
+        imprimirextrato(){
+            console.log(this.banco.nome)
+            console.log(this.saldo)
+            console.log(this.limite)
+            console.log(this.emprestimo)
+        }
+    }
+        
+    class Client{
+        constructor(nome){
+            this.nome = nome;
+            this.contas = [];
+        }
+        addConta(conta){
+            this.contas.push(conta)
+        }
+    }
+    var bancodobrasil=new Banco("Banco do Brasil", 0.1);
+    var nubank=new Banco("Nubank", 0.15);
+    var client=new Client("Kauan Schleifer")
+    var conta1=new Conta(nubank, 0 , 1000, 0)
+    var conta2=new Conta(bancodobrasil, 0 , 1000, 0 )
+    client.addConta(conta1);
+    client.addConta(conta2);
+    conta1.depositar(1000);
+    conta2.depositar(2000);
+    conta1.sacar(1500);
+    conta2.sacar(1500);
+    conta1.fazerEmprestimo(500);
+    conta2.fazerEmprestimo(1500);
+    conta1.imprimirextrato();
+    conta2.imprimirextrato();
+    
+    
+    
+    </script>

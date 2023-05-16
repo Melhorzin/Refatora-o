@@ -1,0 +1,58 @@
+<script>
+    const opcao1 = 'Solteiro';
+    const opcao2 = 'Casado';
+    const opcao3 = 'Divorciado';
+    var totalRespondentes = 0;
+    var totalSolteiros = 0;
+    var totalCasados = 0;
+    var totalDivorciados = 0;
+    var maisVelhoSolteiro = 0;
+    var maisNovoSolteiro = 0;
+    var totalSolteirosMasculino = 0;
+    var totalSolteirosFeminino = 0;
+    do {
+        var opcao = prompt('Digite seu estado civil:('+ opcao1 + ', '+ opcao2 + ', '+ opcao3 + ')');
+        var idade = prompt('Digite sua idade:');
+        var sexo = prompt('Digite seu sexo:(Masculino, Feminino)');
+        var continuar = prompt('Deseja continuar? (Sim, Não)');
+        totalRespondentes ++;
+
+        if (opcao == 'Solteiro') {
+            totalSolteiros ++;
+            if (idade > maisVelhoSolteiro) {
+                maisVelhoSolteiro = idade;
+            }
+            if ((idade < maisNovoSolteiro) || (maisNovoSolteiro == 0)) {
+                maisNovoSolteiro = idade;
+            }
+           
+            if (sexo == 'Masculino') {
+                totalSolteirosMasculino ++;
+            } else if (sexo == 'Feminino') {
+                totalSolteirosFeminino ++;
+            }
+           
+        } else if (opcao == 'Casado') {
+            totalCasados ++;
+        } else if (opcao == 'Divorciado') {
+            totalDivorciados ++;
+        }
+
+    } while (continuar == 'Sim');
+
+    document.write('Total de respondentes: ' + totalRespondentes);
+    document.write('<br>');
+    document.write('% de Solteiros: ' + ((totalSolteiros / totalRespondentes) * 100));
+    document.write('<br>');
+    document.write('% de Casados: ' + ((totalCasados / totalRespondentes) * 100));
+    document.write('<br>');
+    document.write('% de Divorciados: ' + ((totalDivorciados / totalRespondentes) * 100));
+    document.write('<br>');
+    document.write('Idade do solteiro mais velho:' + maisVelhoSolteiro);
+    document.write('<br>');
+    document.write('Idade do solteiro mais novo:' + maisNovoSolteiro);
+    document.write('<br>');
+    document.write('Total respondentes do sexo masculino: ' + totalSolteirosMasculino);
+    document.write('<br>');
+    document.write('Total respondentes do sexo feminino: ' + totalSolteirosFeminino);
+</script>
